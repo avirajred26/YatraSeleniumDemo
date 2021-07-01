@@ -36,11 +36,20 @@ public class TC001_SearchFlights_Yatra extends TestBase {
 			Assert.assertEquals(testValue, "Yatra.com | Bengaluru to Delhi flights");
 			reporting("Search Flight Validation", "User shall be able to search flight betwwen "+ExcelLibraries.getTestColValue("fromCity")+" and "+ExcelLibraries.getTestColValue("toCity"), "user Suucceslly search the flightL", "Pass");
 			objSearch = new SearchPage(driver);
+			
 			flightNumber = 	objSearch.searchFlightDetails();
-			reporting("Flight List Validation", "User Shall be ablt to see flight list after Search ", "User able to see "+flightNumber +" flight list after search ", "Pass");;
+			
+			if(flightNumber!=0) {
+				reporting("Flight List Validation", "User Shall be ablt to see flight list after Search ", "User able to see "+flightNumber +" flight list after search ", "Pass");;
+			}else {
+				reporting("Flight List Validation", "User Shall be ablt to see flight list after Search ", "User not able to see flight list " , "Fail");
+				closeBrowser();
+			}
+			
+			
 		}catch(AssertionError e) {
 			reporting("Search Flight Validation", "User shall be able to search flight betwwen "+ExcelLibraries.getTestColValue("fromCity")+" and "+ExcelLibraries.getTestColValue("toCity"), "user fail to search ", "Fail");
-			reporting("Flight List Validation", "User Shall be ablt to see flight list after Search ", "User not able to see flight list " , "Fail");
+			
 			closeBrowser();
 		}
 		

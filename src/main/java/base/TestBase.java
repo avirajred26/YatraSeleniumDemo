@@ -114,8 +114,11 @@ public class TestBase {
     	
     	prefs = new HashMap<String, Object>();
     	prefs.put("profile.default_content_setting_values.notifications", 2);
+    	
+    	
     	String BrowserVersion = TestUtil.getBrowserVersion();	
 		System.out.println("Browser Version- "+BrowserVersion);
+		
 		WebDriverManager.chromedriver().version(BrowserVersion).setup();
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", prefs);

@@ -36,25 +36,27 @@ public class HomePage extends PageBase {
 		setWebDriver(driver);
 	}
 	
-	public void selectFromCity(String City) {
+	public void selectFromCity(String City) throws InterruptedException {
 		TestUtil.returnStringName(City);
 		clickOnFromCity.click();	
 		clickOnFromCity.clear();
 		
 		jsExecutortypetoElement(clickOnFromCity, TestUtil.returnStringName(City));
 		System.out.println("//span[normalize-space()='("+TestUtil.returnStringName(City)+")']");
-		
+		Thread.sleep(2000);
 		pbDriver.findElement(By.xpath("//span[normalize-space()='("+TestUtil.returnStringName(City)+")']")).click();
 	}
 	
 	
-	public void selectToCity(String city) {
+	public void selectToCity(String city) throws InterruptedException {
 		
 		clickOnToCity.click();
 		clickOnToCity.clear();
 		
 		jsExecutortypetoElement(clickOnToCity, TestUtil.returnStringName(city));
 		System.out.println("//span[normalize-space()='("+TestUtil.returnStringName(city)+")']");
+		
+		Thread.sleep(2000);
 		pbDriver.findElement(By.xpath("//span[normalize-space()='("+TestUtil.returnStringName(city)+")']")).click();
 			
 	}
@@ -67,7 +69,7 @@ public class HomePage extends PageBase {
 	}
 	
 	
-	public String searchFlights(String strFromCity,String strToCity) {
+	public String searchFlights(String strFromCity,String strToCity) throws InterruptedException {
 		
 		waitForPageLoad();
 		selectFromCity(strFromCity);
